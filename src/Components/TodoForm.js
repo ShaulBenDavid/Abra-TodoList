@@ -1,16 +1,26 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import FormCss from './TodoForm.module.css';
+
 const TodoForm = ({ addNewTodo, ...props}) => {
     const [todoValue, setTodoValue] = useState("");
 
     const addNewTodoHandler = (event) => {
         addNewTodo({ text: todoValue, 
-                 isComplete: false });
+            isComplete: false
+        });
+        setTodoValue('');
     }
     return (
-        <>
-            <label>Add todo :</label><input type="text" onChange={(event) => setTodoValue(event.target.value)}></input>
-            <button onClick={addNewTodoHandler}>Add</button>
-        </>
+        <div className={FormCss.formContainer}>
+            <input
+                value={todoValue}
+                className={FormCss.addTodo}
+                type="text"
+                placeholder='Write a new todo...'
+                onChange={(event) => setTodoValue(event.target.value)}
+            ></input>
+            <button onClick={addNewTodoHandler} className={FormCss.addBtn}>ADD</button>
+        </div>
     )
 }
 

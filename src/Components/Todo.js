@@ -1,4 +1,6 @@
-import "./Todo.css";
+import React from 'react';  
+import TodoCss from './Todo.module.css';
+
 const Todo = ({id, text, isComplete, deleteTodo, toggleCompleteTodo, ...props}) => {
 
     const deleteTodoHandler = (event) => {
@@ -8,9 +10,14 @@ const Todo = ({id, text, isComplete, deleteTodo, toggleCompleteTodo, ...props}) 
     const toggleCompleteHandler = (event) => {
         toggleCompleteTodo(id);
     }
+
     return (
-        <div className={isComplete ? "completed" : ""}>
-            <p onClick={toggleCompleteHandler}>{text}<button onClick={deleteTodoHandler}>X</button></p>
+        <div className={isComplete ? `${TodoCss.completed} ${TodoCss.todoContainer}` : TodoCss.todoContainer}>
+        <input type="checkbox" name="checkTodo" onClick={toggleCompleteHandler} className={TodoCss.checkBox}/>
+            <p className={TodoCss.myTask}>
+                {text}
+                <button onClick={deleteTodoHandler}>X</button>
+            </p>
         </div>
     )
 }

@@ -1,15 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 import TodoList from './Components/TodoList';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import TodoForm from './Components/TodoForm';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 function App() {
 
-  const [todos, setTodos] = useState([]);
-
+  const [todos, setTodos] = useState(() =>[]);
+  
   const addNewTodo = (todo) => {
+    if (!todo.text || /^\s*$/.test(todo.text)) {
+      return;
+    }
+    console.log({todo});
     const newTodos = [...todos];
     newTodos.push(todo);
     setTodos(newTodos);
@@ -30,11 +35,16 @@ function App() {
   }
 
   return (
-    <div className="ToddApp">
-      <TodoList todos={todos} 
-                deleteTodo={deleteTodo} 
-                toggleCompleteTodo={ToggleComplete}/>
-      <TodoForm addNewTodo={addNewTodo}/>
+    <div className="TodoApp">
+      <Header />
+      <div className='container'>
+        <TodoList todos={todos}
+          deleteTodo={deleteTodo}
+          toggleCompleteTodo={ToggleComplete}
+        />
+        <TodoForm addNewTodo={addNewTodo} />
+      </div>
+      <Footer />
     </div>
   );
 }
