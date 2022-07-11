@@ -1,20 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { todoIsCoplete, removeTodo } from '../Redux/todoListSlice';
 import TodoCss from "./Todo.module.css";
 
 const Todo = ({
   id,
   text,
   isComplete,
-  deleteTodo,
-  toggleCompleteTodo,
   ...props
 }) => {
+
+  const dispatch = useDispatch();
+  // Delete Todo
   const deleteTodoHandler = (event) => {
     event.stopPropagation();
-    deleteTodo(id);
+    dispatch(removeTodo(id));
   };
+  // Toggle Completed
   const toggleCompleteHandler = (event) => {
-    toggleCompleteTodo(id);
+    dispatch(todoIsCoplete(id));
   };
 
   return (
@@ -28,9 +32,9 @@ const Todo = ({
       <input
         type="checkbox"
         name="checkTodo"
-        onClick={toggleCompleteHandler}
-        className={TodoCss.checkBox}
         checked={isComplete}
+        onChange={toggleCompleteHandler}
+        className={TodoCss.checkBox}
       />
       <p className={TodoCss.myTask}>
         {text}
