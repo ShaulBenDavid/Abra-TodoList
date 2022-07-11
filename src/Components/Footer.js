@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from './Assets/abra-img.png';
+import Banner from '../Assets/abra-img.png';
 import FooterCss from './Footer.module.css'
 
 const Footer = () => {

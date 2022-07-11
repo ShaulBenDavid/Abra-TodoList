@@ -1,4 +1,4 @@
-import memo from './Assets/memo-emoji.png';
+import memo from '../Assets/memo-emoji.png';
 import HeaderCss from './Header.module.css';
 
 const Header = () => {
