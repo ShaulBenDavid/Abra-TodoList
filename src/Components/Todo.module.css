@@ -30,22 +30,22 @@
     color: #1c1c1c;
     margin: 0;
     margin-left: 8px;
+    display: flex;
 }
 
 .myTask:first-letter {
     text-transform: capitalize;
 }
 /* Delete Button */
-.myTask button {
+.myTask img {
     display: none;
+    margin-left: 8px;
 }
 
-.myTask:hover button {
+.myTask:hover img {
     display: inline-block;
 }
 
-.todoContainer button {
-    width: 16px;
-    height: 16px;
+.todoContainer img {
     padding: 0;
 }

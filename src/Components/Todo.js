@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { todoIsCoplete, removeTodo } from '../Redux/todoListSlice';
+import ButtonX from '../Assets/x-icon 1.svg';
 import TodoCss from "./Todo.module.css";
 
 const Todo = ({
@@ -38,7 +39,7 @@ const Todo = ({
       />
       <p className={TodoCss.myTask}>
         {text}
-        <button onClick={deleteTodoHandler}>X</button>
+        <img onClick={deleteTodoHandler} src={ButtonX} alt={text} />
       </p>
     </div>
   );
